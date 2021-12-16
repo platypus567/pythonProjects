@@ -1,0 +1,13 @@
+
+from turtle import Turtle, Screen
+import random
+timmy_the_turtle = Turtle()
+
+timmy_the_turtle.color("DarkRed")
+colors = ["CornflowerBlue", "aquamarine", "Chartreuse", "BlueViolet", "SlateGrey", "SeaGreen"]
+directions = [0, 90, 180, 360]
+timmy_the_turtle.pensize(15)
+for i in range(30):
+    timmy_the_turtle.forward(30)
+    timmy_the_turtle.setheading((random.choice(directions)))
+    timmy_the_turtle.color(random.choice(colors))
