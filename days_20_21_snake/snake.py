@@ -13,12 +13,17 @@ class Snake():
         self.head = self.segments[0]
     def create_snake(self):
         for pos in STARTING_POSITIONS:
+            self.add_segment(pos)
+    def add_segment(self,pos):
+        new_segment = Turtle(shape="square")
+        new_segment.penup()
+        new_segment.color('white')
+        new_segment.goto(pos)
+        self.segments.append(new_segment)
 
-            new_segment = Turtle(shape="square")
-            new_segment.penup()
-            new_segment.color('white')
-            new_segment.goto(pos)
-            self.segments.append(new_segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
     def move(self):
         for seg_num in range(len(self.segments)-1,0,-1):
             new_x = self.segments[seg_num - 1].xcor()
@@ -40,3 +45,6 @@ class Snake():
     def down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
+    def hit_wall(self):
+        if self.head.xcor() > 307 or self.head.xcor() < -307 or self.head.ycor() > 309 or self.head.ycor() < -309:
+            return True
