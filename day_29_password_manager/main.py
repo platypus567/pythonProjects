@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-import pyperclip
+
 import random
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
@@ -17,7 +17,7 @@ canvas.grid(column=1,row=1)
 
 
 def add():
-    with open("datafile.txt","w") as datafile:
+    with open("datafile.txt","a") as datafile:
         datafile.write(f"{web_entry.get()} | {user_entry.get()} | {pass_entry.get()} \n")
     messagebox.showinfo("Success!", "Password Successfully Saved.")
     datafile.close()
@@ -31,7 +31,7 @@ def generate():
         final_passwd.append(random.choice(symbols))
     random.shuffle(final_passwd)
     pass_entry.insert(0,final_passwd)
-    pyperclip.copy(final_passwd)
+
     messagebox.showinfo("Success!","Password copied to clipboard.")
     final_passwd.clear()
 
